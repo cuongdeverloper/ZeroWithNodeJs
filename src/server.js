@@ -23,8 +23,8 @@ app.use('/', webRoutes);
 (async () => {
   try {
     const [rows, fields] = await connection.query('SELECT * FROM `Users`');
-    console.log('Result: ', rows);
-    console.log('Fields: ', fields);
+    // console.log('Result: ', rows);
+    // console.log('Fields: ', fields);
   } catch (err) {
     console.error('Error executing query: ', err);
   }

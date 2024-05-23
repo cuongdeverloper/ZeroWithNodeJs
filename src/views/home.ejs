@@ -1,17 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -23,7 +42,8 @@
           <a class="nav-link" href="/create">Create User</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Dropdown link
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -35,23 +55,43 @@
       </ul>
     </div>
   </nav>
-  <!-- <form action="/create-user" method="get">
-    <div class="row">
-      <div class="col-7">
-        <input type="text" class="form-control" placeholder="Email" name="email">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Name" name="name">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="City" name="city">
-      </div>
-      <div>
-        <button class="btn btn-success">Save</button>
-      </div>
-    </div>
-  </form> -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <div class="table-user">
+    <p>List user</p>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>EMAIL</th>
+        <th>NAME</th>
+        <th>CITY</th>
+        <th>ACTION</th>
+      </tr>
+      <% ListUser.forEach(function(user) { %>
+        <!-- <li> Name:<%= user.name %> Course:<%= user.course %></li> -->
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.city %></td>
+          <td>
+            <button class="btn btn-success"><a href="/update-user/<%= user.id %>">EDIT</a></button>
+            <form action="/delete-userbyid/<%= user.id %>" method="post">
+              <button class="btn btn-warning">DELETE</button>
+            </form>
+            
+          </td>
+        </tr>
+     <% }); %> 
+      
+      
+    </table>
+  </div>
+  </form> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
