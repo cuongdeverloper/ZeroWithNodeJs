@@ -31,6 +31,8 @@ const getDeleteUserById = async(userId) =>{
     );
     return results
 }
+
+
 module.exports = {
-    getAllUser, getUserId,getUpdateUserById,getDeleteUserById
+    getAllUser, getUserId,getUpdateUserById,getDeleteUserById,
 }
